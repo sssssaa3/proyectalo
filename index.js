@@ -408,41 +408,38 @@ $(document).ready(() => {
       createFormWorkers(proyectFilter[0])
       createCardWorkers(proyectFilter[0])
     }
+  })
 
-    $("#buttonSearchProyect").click(function (event) {
-      event.preventDefault()
-      const value = $("#inputSearchProyect").val()
-      if (proyects.length == 0 || !value.trim()) {
-        $("#inputSearchProyect").val("")
-        return
-      }
-
-      const searchResult = proyects.filter((proyect) => proyect.nameProyect.includes(value.toUpperCase().trim()))
-      console.log(searchResult);
-      $("#listProyects").empty()
-      if (searchResult.length > 0) {
-        if ($("#noProyectsSearch").css("display") === "block") {
-          $("#noProyectsSearch").fadeToggle()
-        }
-        searchResult.forEach((proyect) => {
-          createItemProyect(proyect.nameProyect)
-        })
-        if ($("#buttonRestaurarProyectos").css("display") === "none") {
-          $("#buttonRestaurarProyectos").fadeToggle()
-        }
-      } else {
-        if ($("#noProyectsSearch").css("display") === "none") {
-          $("#noProyectsSearch").fadeToggle()
-        }
-        if ($("#buttonRestaurarProyectos").css("display") === "none") {
-          $("#buttonRestaurarProyectos").fadeToggle()
-        }
-      }
+  $("#buttonSearchProyect").click(function (event) {
+    event.preventDefault()
+    const value = $("#inputSearchProyect").val()
+    if (proyects.length == 0 || !value.trim()) {
       $("#inputSearchProyect").val("")
+      return
+    }
 
-    })
-
-
+    const searchResult = proyects.filter((proyect) => proyect.nameProyect.includes(value.toUpperCase().trim()))
+    console.log(searchResult);
+    $("#listProyects").empty()
+    if (searchResult.length > 0) {
+      if ($("#noProyectsSearch").css("display") === "block") {
+        $("#noProyectsSearch").fadeToggle()
+      }
+      searchResult.forEach((proyect) => {
+        createItemProyect(proyect.nameProyect)
+      })
+      if ($("#buttonRestaurarProyectos").css("display") === "none") {
+        $("#buttonRestaurarProyectos").fadeToggle()
+      }
+    } else {
+      if ($("#noProyectsSearch").css("display") === "none") {
+        $("#noProyectsSearch").fadeToggle()
+      }
+      if ($("#buttonRestaurarProyectos").css("display") === "none") {
+        $("#buttonRestaurarProyectos").fadeToggle()
+      }
+    }
+    $("#inputSearchProyect").val("")
 
   })
 
